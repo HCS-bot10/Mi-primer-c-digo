@@ -87,18 +87,19 @@
 
     restartBtn.onclick = reset;
 
+    // Nueva función para obtener la posición del mouse relativa al canvas
     function getMousePos(evt) {
-  const rect = canvas.getBoundingClientRect();
-  return {
-    x: (evt.clientX - rect.left) * (canvas.width / rect.width),
-    y: (evt.clientY - rect.top) * (canvas.height / rect.height)
-  };
-}
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: (evt.clientX - rect.left) * (canvas.width / rect.width),
+        y: (evt.clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
 
-canvas.addEventListener('mousemove', (e) => {
-  const pos = getMousePos(e);
-  lover.x = Math.max(lover.w/2, Math.min(canvas.width - lover.w/2, pos.x));
-});
+    canvas.addEventListener('mousemove', (e) => {
+      const pos = getMousePos(e);
+      lover.x = Math.max(lover.w/2, Math.min(canvas.width - lover.w/2, pos.x));
+    });
 
     canvas.addEventListener('click', () => {
       heart.vy -= 1.3;
